@@ -24,7 +24,9 @@ do
 		((totalWorkingDays++))
  		getWorkingHours $((RANDOM%3)) 
  		totalWorkingHours=$(($totalWorkingHours+$working_hr))
+		dailyWages[$totalWorkingDays]=$(($working_hr*$WAGE_PER_HR))
 done
 salary=$(($totalWorkingHours*$WAGE_PER_HR))
 echo  "Total working hours : " $totalWorkingHours
+echo  "Daily wages : " ${dailyWages[@]}
 echo  "Total monthly salary : "$salary
