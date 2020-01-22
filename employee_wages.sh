@@ -18,14 +18,12 @@ case $1 in
 				((dailywages=0))
 				;;
 		esac
-	#	echo $working_hr
-}
+	}
 while [[ $totalWorkingDays -le 20 && $totalWorkingHours -le 100 ]]
 do
 		((totalWorkingDays++))
  		getWorkingHours $((RANDOM%3)) 
  		totalWorkingHours=$(($totalWorkingHours+$working_hr))
-
 done
 salary=$(($totalWorkingHours*$WAGE_PER_HR))
 echo  "Total working hours : " $totalWorkingHours
