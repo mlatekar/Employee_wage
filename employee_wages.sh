@@ -1,22 +1,22 @@
 #!/bin/bash -x
 echo "Welcome to  Employe wage"
-WAGE_PER_HR=20
-isfulltime=1
-isparttime=2
-working_hr=0
+WAGEPERHR=20
+isFullTime=1
+isPartTime=2
+workingHr=0
 totalWorkingHours=0
 totalWorkingDays=0
 declare -A Day
 function getWorkingHours(){		
 case $1 in	
-         $isfulltime)
-			   ((working_hr=8))
+         $isFullTime)
+			   ((workingHr=8))
 				;;
-        	$isparttime)   
-	         ((working_hr=4))
+        	$isPartTime)   
+	         ((workingHr=4))
          	;;
          *)
-				((dailywages=0))
+				((dailyWages=0))
 				;;
 		esac
 	}
@@ -24,10 +24,10 @@ while [[ $totalWorkingDays -le 20 && $totalWorkingHours -le 100 ]]
 do
 		((totalWorkingDays++))
  		getWorkingHours $((RANDOM%3)) 
- 		totalWorkingHours=$(($totalWorkingHours+$working_hr))
-#		dailyWages[$totalWorkingDays]=$(($working_hr*$WAGE_PER_HR))
-		echo Day"$totalWorkingDays""${Day[Day"$totalWorkingDays"]}=$(($working_hr*$WAGE_PER_HR))"
+ 		totalWorkingHours=$(($totalWorkingHours+$workingHr))
+#		dailyWages[$totalWorkingDays]=$(($working_hr*$WAGEPERHR))
+		echo Day"$totalWorkingDays""${Day[Day"$totalWorkingDays"]}=$(($workingHr*$WAGEPERHR))"
 done
-salary=$(($totalWorkingHours*$WAGE_PER_HR))
+salary=$(($totalWorkingHours*$WAGEPERHR))
 echo  "Total working hours : " $totalWorkingHours
 echo  "Total monthly salary : "$salary
